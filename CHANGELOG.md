@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-11-01
+
+### Fixed
+
+- Filename collisions are no longer silently overwritten. `curtFilename()`
+  keys on conversation identity, and real WildChat data contains duplicate
+  `conversation_hash` values with diverging rows — on the 1K conformance
+  sample this swallowed 5 of 1000 conversions (last-wins). Identical
+  content now overwrites in place (idempotent re-runs); differing content
+  gets a `-N` suffix, a per-collision stderr line, and a count in the CLI
+  summary.
+
+### Added
+
+- `resolveCurtWritePath()` library function + 4 tests.
+- `CONFORMANCE-1K.md`: L3 BULK conformance artifact — 1000 real WildChat
+  records, 995/995 output files re-validate with `parseCurt`, 1.126x
+  envelope overhead (pre-fix file count; see the doc for provenance).
+
+### Changed
+
+- `GENERATOR` string aligned with the package version (was pinned at
+  1.0.0 since release).
+
 ## [1.0.0] - initial public release (unreleased)
 
 ### Added
