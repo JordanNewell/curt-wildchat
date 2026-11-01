@@ -33,5 +33,13 @@
 		"wildchat",
 		"huggingface",
 		"converter"
-	]
+	],
+	"repository": {
+		"url": "https://github.com/JordanNewell/curt-wildchat.git",
+		"type": "git"
+	},
+	"homepage": "https://github.com/JordanNewell/curt-wildchat#readme",
+	"bugs": {
+		"url": "https://github.com/JordanNewell/curt-wildchat/issues"
+	}
 }
