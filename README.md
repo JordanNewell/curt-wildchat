@@ -14,7 +14,7 @@ it makes no claim that WildChat content is representative, safe, or
 suitable for any particular use. Screen anything you plan to show anyone.
 
 ```sh
-npm i -g .            # or: npx curt-wildchat
+npm install -g curt-wildchat   # or: npx curt-wildchat
 curt-wildchat wildchat.jsonl -o ./out
 curt-wildchat wildchat.jsonl --sample 5
 curt-wildchat wildchat.jsonl --language English
@@ -104,8 +104,8 @@ converter behavior).
 
 ```sh
 npm i
-npm test       # vitest
+npm test       # vitest, 17 tests
 npm run build  # tsc -> dist/
 ```
 
-MIT. Local project; not published.
+MIT — see [LICENSE](LICENSE).

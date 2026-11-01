@@ -25,7 +25,7 @@ import {
 	serializeCurt,
 } from "curt-format";
 
-export const GENERATOR = "curt-wildchat@0.1.0";
+export const GENERATOR = "curt-wildchat@1.0.0";
 
 export interface ConvertStats {
 	/** Messages emitted into the conversation. */

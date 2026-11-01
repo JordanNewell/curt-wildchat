@@ -1,6 +1,6 @@
 {
 	"name": "curt-wildchat",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "Convert WildChat (allenai/WildChat-1M) conversation records to .curt conversation files",
 	"license": "MIT",
 	"type": "module",
