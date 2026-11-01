@@ -1,0 +1,148 @@
+{
+	"curt": "curtis-conversation",
+	"version": 1,
+	"conversation": {
+		"id": "8e6ec7321d882f97faca2a135cee8d1a",
+		"title": "Which singer is better technically: Floor Jansen or Taylor …",
+		"createdAt": 1681005145000,
+		"updatedAt": 1681005145000,
+		"messages": [
+			{
+				"id": "8e6ec7321d882f97faca2a135cee8d1a-1",
+				"role": "user",
+				"content": "Which singer is better technically: Floor Jansen or Taylor Swift? Rate from 1 to 10 your confidence that your answer is correct.",
+				"timestamp": 1681005145000,
+				"toxic": false,
+				"redacted": false,
+				"language": "English",
+				"turnIdentifier": 101544
+			},
+			{
+				"id": "8e6ec7321d882f97faca2a135cee8d1a-2",
+				"role": "assistant",
+				"content": "As an AI language model, I cannot provide personal opinions, but I can provide some information about both singers.\n\nFloor Jansen is a highly regarded Dutch singer, songwriter, and vocal coach. She is the lead vocalist of the Finnish symphonic metal band Nightwish and has a versatile vocal range spanning from classical to rock and metal styles. She is trained in both classical and contemporary singing techniques.\n\nTaylor Swift is an American singer-songwriter known for her narrative songwriting and catchy pop melodies. While she has a distinctive vocal style, she is not specifically known for her technical proficiency as a singer.\n\nBased on information about their vocal training and abilities, Floor Jansen may be considered technically better as a singer than Taylor Swift. However, it's essential to keep in mind that personal taste and preference play a significant role in determining who is \"better.\"\n\nConfidence level in providing an informed comparison: 8/10",
+				"timestamp": 1681005145000,
+				"toxic": false,
+				"redacted": false,
+				"language": "English",
+				"turnIdentifier": 101544,
+				"model": "gpt-4-0314"
+			}
+		],
+		"provider": "openai",
+		"model": "gpt-4-0314",
+		"language": "English",
+		"toxic": false,
+		"redacted": false,
+		"turns": 1,
+		"openaiModeration": [
+			{
+				"categories": {
+					"harassment": false,
+					"harassment/threatening": false,
+					"harassment_threatening": false,
+					"hate": false,
+					"hate/threatening": false,
+					"hate_threatening": false,
+					"self-harm": false,
+					"self-harm/instructions": false,
+					"self-harm/intent": false,
+					"self_harm": false,
+					"self_harm_instructions": false,
+					"self_harm_intent": false,
+					"sexual": false,
+					"sexual/minors": false,
+					"sexual_minors": false,
+					"violence": false,
+					"violence/graphic": false,
+					"violence_graphic": false
+				},
+				"category_scores": {
+					"harassment": 0.0007383215706795454,
+					"harassment/threatening": 0.000002135942168024485,
+					"harassment_threatening": 0.000002135942168024485,
+					"hate": 0.000029006907425355166,
+					"hate/threatening": 1.0624722079910498e-7,
+					"hate_threatening": 1.0624722079910498e-7,
+					"self-harm": 0.000023513704945798963,
+					"self-harm/instructions": 0.000013568700524047017,
+					"self-harm/intent": 0.00005559798955800943,
+					"self_harm": 0.000023513704945798963,
+					"self_harm_instructions": 0.000013568700524047017,
+					"self_harm_intent": 0.00005559798955800943,
+					"sexual": 0.0008897462976165116,
+					"sexual/minors": 0.00030805126880295575,
+					"sexual_minors": 0.00030805126880295575,
+					"violence": 0.0005483044078573585,
+					"violence/graphic": 0.00018299401563126594,
+					"violence_graphic": 0.00018299401563126594
+				},
+				"flagged": false
+			},
+			{
+				"categories": {
+					"harassment": false,
+					"harassment/threatening": false,
+					"harassment_threatening": false,
+					"hate": false,
+					"hate/threatening": false,
+					"hate_threatening": false,
+					"self-harm": false,
+					"self-harm/instructions": false,
+					"self-harm/intent": false,
+					"self_harm": false,
+					"self_harm_instructions": false,
+					"self_harm_intent": false,
+					"sexual": false,
+					"sexual/minors": false,
+					"sexual_minors": false,
+					"violence": false,
+					"violence/graphic": false,
+					"violence_graphic": false
+				},
+				"category_scores": {
+					"harassment": 0.00019664334831759334,
+					"harassment/threatening": 0.0000018757759789878037,
+					"harassment_threatening": 0.0000018757759789878037,
+					"hate": 0.000007068907962093363,
+					"hate/threatening": 7.697348110013991e-7,
+					"hate_threatening": 7.697348110013991e-7,
+					"self-harm": 0.000011542887477844488,
+					"self-harm/instructions": 0.0000104699238363537,
+					"self-harm/intent": 0.00003148602263536304,
+					"self_harm": 0.000011542887477844488,
+					"self_harm_instructions": 0.0000104699238363537,
+					"self_harm_intent": 0.00003148602263536304,
+					"sexual": 0.0004691602662205696,
+					"sexual/minors": 0.00006107177614467219,
+					"sexual_minors": 0.00006107177614467219,
+					"violence": 0.0005878056981600821,
+					"violence/graphic": 0.0000778102403273806,
+					"violence_graphic": 0.0000778102403273806
+				},
+				"flagged": false
+			}
+		],
+		"detoxifyModeration": [
+			{
+				"identity_attack": 0.00008805545076029375,
+				"insult": 0.0002946521562989801,
+				"obscene": 0.00015950592933222651,
+				"severe_toxicity": 0.00002056532866845373,
+				"sexual_explicit": 0.00002175265399273485,
+				"threat": 0.000029666376576642506,
+				"toxicity": 0.0005389502621255815
+			},
+			{
+				"identity_attack": 0.00010234610817860812,
+				"insult": 0.0002550088393036276,
+				"obscene": 0.0002828027936629951,
+				"severe_toxicity": 0.0000560427361051552,
+				"sexual_explicit": 0.00004069651913596317,
+				"threat": 0.00005738770414609462,
+				"toxicity": 0.0001729717041598633
+			}
+		]
+	},
+	"generator": "curt-wildchat@0.1.0"
+}
