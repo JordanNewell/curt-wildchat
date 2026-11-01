@@ -8,6 +8,7 @@ import {
 	type ConvertOptions,
 	GENERATOR,
 	convertWildchat,
+	resolveCurtWritePath,
 	serializeValidated,
 } from "./wildchat.js";
 
@@ -83,6 +84,7 @@ function main(): number {
 	let converted = 0;
 	let parseErrors = 0;
 	let skipped = 0;
+	let collisions = 0;
 
 	for (const line of lines) {
 		if (options.sample && converted >= options.sample) break;
@@ -110,14 +112,20 @@ function main(): number {
 			const outDir = resolve(options.outDir ?? ".");
 			mkdirSync(outDir, { recursive: true });
 			const file = join(outDir, curtFilename(result.conversation));
-			writeFileSync(file, body);
-			console.log(file);
+			const target = resolveCurtWritePath(file, body);
+			if (target.collided) {
+				collisions++;
+				console.error(`filename collision for ${result.conversation.id}; wrote ${target.path} instead`);
+			}
+			writeFileSync(target.path, body);
+			console.log(target.path);
 		}
 		converted++;
 	}
 
 	console.error(
-		`${GENERATOR}: ${parsed} parsed, ${converted} converted, ${parseErrors} parse errors, ${skipped} skipped`,
+		`${GENERATOR}: ${parsed} parsed, ${converted} converted, ${parseErrors} parse errors, ${skipped} skipped` +
+			(collisions > 0 ? `, ${collisions} filename collisions (suffixed)` : ""),
 	);
 	// Parse errors are counted, never fatal.
 	return 0;

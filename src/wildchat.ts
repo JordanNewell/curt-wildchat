@@ -18,6 +18,7 @@
  *   `redacted` (bool), `turn_identifier` (int).
  */
 
+import { existsSync, readFileSync } from "node:fs";
 import {
 	type CurtConversation,
 	type CurtMessage,
@@ -232,4 +233,25 @@ export function convertWildchat(
 export function serializeValidated(conversation: CurtConversation): string | null {
 	const body = serializeCurt(conversation, GENERATOR);
 	return parseCurt(body) ? body : null;
+}
+
+/**
+ * Resolve a .curt output path against on-disk content. Identical content
+ * overwrites in place (idempotent re-runs stay quiet); differing content is
+ * a collision — curtFilename() keys on conversation identity, and real
+ * corpora contain duplicate ids with diverging rows, so those get a -N
+ * suffix instead of silently losing writes (last-wins was observed
+ * swallowing 5 of 1000 conversions on the 1K conformance sample).
+ */
+export function resolveCurtWritePath(
+	filePath: string,
+	body: string,
+): { path: string; collided: boolean } {
+	if (!existsSync(filePath)) return { path: filePath, collided: false };
+	if (readFileSync(filePath, "utf8") === body) return { path: filePath, collided: false };
+	const stem = filePath.slice(0, -".curt".length);
+	let n = 2;
+	let target = `${stem}-2.curt`;
+	while (existsSync(target)) target = `${stem}-${++n}.curt`;
+	return { path: target, collided: true };
 }

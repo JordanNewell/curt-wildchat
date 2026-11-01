@@ -1,11 +1,13 @@
-import { readFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it } from "vitest";
 import { parseCurt } from "curt-format";
 import {
 	convertWildchat,
 	deriveTitle,
 	parseTimestamp,
+	resolveCurtWritePath,
 	serializeValidated,
 } from "../src/wildchat.js";
 
@@ -155,4 +157,38 @@ describe("round-trip validation", () => {
 			expect(parsed!.language).toBe(result!.conversation.language);
 		}
 	});
+});
+
+describe("resolveCurtWritePath", () => {
+	const dir = mkdtempSync(join(tmpdir(), "curt-wildchat-collide-"));
+	const file = join(dir, "2026-01-01 test demo.curt");
+
+	it("returns the original path when the file does not exist", () => {
+		expect(resolveCurtWritePath(file, "body")).toEqual({ path: file, collided: false });
+	});
+
+	it("overwrites in place when existing content is identical", () => {
+		writeFileSync(file, "body");
+		expect(resolveCurtWritePath(file, "body")).toEqual({ path: file, collided: false });
+	});
+
+	it("suffixed -2 on differing content instead of overwriting", () => {
+		writeFileSync(file, "original");
+		const result = resolveCurtWritePath(file, "different");
+		expect(result.collided).toBe(true);
+		expect(result.path).toBe(`${file.slice(0, -".curt".length)}-2.curt`);
+		expect(existsSync(file)).toBe(true);
+		expect(readFileSync(file, "utf8")).toBe("original");
+	});
+
+	it("walks to -3 when -2 is also taken", () => {
+		const stem = file.slice(0, -".curt".length);
+		writeFileSync(`${stem}-2.curt`, "also different");
+		expect(resolveCurtWritePath(file, "third")).toEqual({
+			path: `${stem}-3.curt`,
+			collided: true,
+		});
+	});
+
+	afterAll(() => rmSync(dir, { recursive: true, force: true }));
 });
